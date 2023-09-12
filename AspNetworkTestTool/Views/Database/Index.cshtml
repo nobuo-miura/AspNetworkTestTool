@@ -1,0 +1,71 @@
+@{
+    ViewData["Title"] = "Database";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Please input the DB connection string to test the connection with the database.</p>
+
+<form method="post" action="Database">
+    <fieldset>
+        <br/>
+        <h2>ConnectionString Example</h2>
+        <p>
+            Oracle: Data Source=(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST =  localhost)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = oracle)));Persist Security Info=True;User ID=oracle;Password=oracle;<br />
+            MySQL / MariaDB: Server=127.0.0.1;Database=test;User Id=root;Password=mysql;<br />
+            Postgresql: Server=127.0.0.1;Port=5432;Database=postgres;User Id=postgres;Password=postgres;<br />
+            SQL Server: Server=127.0.0.1;Database=test;User Id=sa;Password=sqlserver;<br/>
+        </p>
+        <div>
+            <label for="connectionString">ConnectionString:</label>
+            <input type="text" id="connectionString" name="connectionString" style="width: 100%;" value="@ViewBag.ConnectionString"/>
+        </div>
+        <br/>
+        <div>
+            <label for="database">Database:</label>
+            <select id="database" name="database">
+                @if (ViewBag.Database == "mysql")
+                {
+                    <option value="mysql" selected>MySQL / MariaDB</option>
+                }
+                else
+                {
+                    <option value="mysql">MySQL / MariaDB</option>
+                }
+                @if (ViewBag.Database == "oracle")
+                {
+                    <option value="oracle" selected>Oracle</option>
+                }
+                else
+                {
+                    <option value="oracle">Oracle</option>
+                }
+                @if (ViewBag.Database == "postgresql")
+                {
+                    <option value="postgresql" selected>Postgresql</option>
+                }
+                else
+                {
+                    <option value="postgresql">Postgresql</option>
+                }
+                @if (ViewBag.Database == "sqlserver")
+                {
+                    <option value="sqlserver" selected>SQL Server</option>
+                }
+                else
+                {
+                    <option value="sqlserver">SQL Server</option>
+                }
+            </select>
+        </div>
+        <br/>
+        <div>
+            <label>&nbsp;</label>
+            <input type="submit" value="Test" class="submit"/>
+        </div>
+    </fieldset>
+</form>
+<hr/>
+<fieldset>
+    <legend>Result: @ViewBag.DatabaseResult</legend>
+    <textarea readonly style="width: 100%;height: 200px;">@ViewBag.DatabaseError</textarea>
+</fieldset>

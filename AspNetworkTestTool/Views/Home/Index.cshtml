@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <fieldset>
+        <textarea readonly style="width: 100%;height: 200px;">@ViewBag.User</textarea>
+    </fieldset>
+
+    <p>Version: @ViewBag.Version</p>
+</div>
