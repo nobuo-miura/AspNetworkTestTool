@@ -11,13 +11,14 @@ public class HomeController : Controller
 
     public HomeController(ILogger<HomeController> logger) => _logger = logger;
 
-
+    [HttpGet]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
         return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
         ViewBag.Version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();

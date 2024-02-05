@@ -5,7 +5,7 @@
 
 <p>Please input the DB connection string to test the connection with the database.</p>
 
-<form method="post" action="Database">
+<form asp-action="Index" asp-controller="Database" method="post">
     <fieldset>
         <br/>
         <h2>ConnectionString Example</h2>
@@ -60,6 +60,7 @@
         <br/>
         <div>
             <label>&nbsp;</label>
+            @Html.AntiForgeryToken()
             <input type="submit" value="Test" class="submit"/>
         </div>
     </fieldset>
