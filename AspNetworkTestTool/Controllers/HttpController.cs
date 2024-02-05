@@ -4,12 +4,14 @@ namespace AspNetworkTestTool.Controllers;
 
 public class HttpController : Controller
 {
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public ActionResult Index(string url, string certificate)
     {
         if (!string.IsNullOrEmpty(url))

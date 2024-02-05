@@ -5,12 +5,14 @@ namespace AspNetworkTestTool.Controllers;
 
 public class RedisController : Controller
 {
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public ActionResult Index(string config)
     {
         if (!string.IsNullOrEmpty(config))

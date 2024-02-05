@@ -8,6 +8,7 @@ namespace AspNetworkTestTool.Controllers;
 
 public class DatabaseController : Controller
 {
+    [HttpGet]
     public IActionResult Index()
     {
         ViewBag.DatabaseResult = "No Connect.";
@@ -16,6 +17,7 @@ public class DatabaseController : Controller
 
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public ActionResult Index(string connectionString, string database)
     {
         if (!string.IsNullOrEmpty(connectionString) && !string.IsNullOrEmpty(database))
